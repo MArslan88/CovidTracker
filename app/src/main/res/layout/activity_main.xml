@@ -133,6 +133,7 @@
                 android:id="@+id/scrollStats"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:visibility="gone"
                 >
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -452,6 +453,7 @@
         android:text="Track Countries"
         android:textSize="18sp"
         android:textColor="@color/color_white"
+        android:elevation="10dp"
         android:padding="5dp"
         />
 
