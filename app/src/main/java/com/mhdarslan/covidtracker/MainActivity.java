@@ -90,9 +90,6 @@ public class MainActivity extends AppCompatActivity {
                             simpleArcLoader.setVisibility(View.GONE);
                             scrollView.setVisibility(View.VISIBLE);
 
-
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
 
