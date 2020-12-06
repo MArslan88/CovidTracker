@@ -2,9 +2,11 @@ package com.mhdarslan.covidtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     SimpleArcLoader simpleArcLoader;
     ScrollView scrollView;
     PieChart pieChart;
+    Button trackBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +45,23 @@ public class MainActivity extends AppCompatActivity {
         tvTotalDeaths = findViewById(R.id.tvTotalDeaths);
         tvTodayDeaths = findViewById(R.id.tvTodayDeaths);
         tvAffectedCountries = findViewById(R.id.tvAffectedCountries);
+        trackBtn = findViewById(R.id.trackBtn);
 
         simpleArcLoader = findViewById(R.id.loader);
         scrollView = findViewById(R.id.scrollStats);
         pieChart = findViewById(R.id.piechart);
 
         fetchData();
+
+        // Affacted Countries Button
+        trackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),AffectedCountries.class));
+//                Intent intent = new Intent(MainActivity.this,AffectedCountries.class);
+//                startActivity(intent);
+            }
+        });
 
     }
 
@@ -120,4 +134,8 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
     }
+
+//    public void goTrackCountries(View view){
+//
+//    }
 }
