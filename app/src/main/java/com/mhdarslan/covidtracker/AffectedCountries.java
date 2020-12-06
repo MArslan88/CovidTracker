@@ -3,10 +3,14 @@ package com.mhdarslan.covidtracker;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -52,6 +56,36 @@ public class AffectedCountries extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         
         fetchData();
+
+        // Apply listener on listview
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                // open the DetailActivity with position data of the clicked list item
+                startActivity(new Intent(getApplicationContext(),DetailActivity.class).putExtra("position",position));
+            }
+        });
+
+        // Search EditText Functionality
+        edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Adapter filter
+                myCustomAdapter.getFilter().filter(s);
+                myCustomAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 
