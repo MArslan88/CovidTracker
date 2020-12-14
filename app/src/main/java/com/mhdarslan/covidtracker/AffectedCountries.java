@@ -67,6 +67,7 @@ public class AffectedCountries extends AppCompatActivity {
             }
         });
 
+
         // Search EditText Functionality
         edtSearch.addTextChangedListener(new TextWatcher() {
             @Override

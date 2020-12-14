@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
     private void fetchData() {
 
         String url = "https://disease.sh/v3/covid-19/all/";
+//        String url = "https://bass.edu.pk/countries2";
+
 
         simpleArcLoader.start();
         StringRequest request = new StringRequest(Request.Method.GET, url,
